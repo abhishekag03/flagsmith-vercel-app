@@ -18,6 +18,12 @@
   font-family: var(--font-mono);
 }
 
+.wrapText {
+  margin: 10px 0 2px;
+  font-size: 18px;
+  display: block;
+}
+
 .description a {
   display: flex;
   justify-content: center;
@@ -32,6 +38,10 @@
   background-color: rgba(var(--callout-rgb), 0.5);
   border: 1px solid rgba(var(--callout-border-rgb), 0.3);
   border-radius: var(--border-radius);
+}
+
+.codeMargin {
+  margin: 0 5px;
 }
 
 .code {
