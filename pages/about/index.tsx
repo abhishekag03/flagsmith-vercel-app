@@ -1,23 +1,11 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import { useRouter } from "next/router";
-import { useFlags } from "flagsmith/react";
-import flagsmith from "flagsmith/isomorphic";
+import Head from 'next/head'
+import Image from 'next/image'
+import { Inter } from 'next/font/google'
+import styles from '@/styles/Home.module.css'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
-export default function AboutPage() {
-  const router = useRouter();
-
-  const { name, position } = router.query; // reading the information entered by user
-  let prof: string = position as string; // converting profession to string
-
-  const flags = useFlags(["configure_card"], ["profession"]); // only causes re-render if specified flag values / traits change
-
-  flagsmith.setTrait("profession", prof); // setting the "profession" trait as the one selected by user
-
+export default function Home() {
   return (
     <>
       <Head>
@@ -38,7 +26,7 @@ export default function AboutPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{" "}
+              By{' '}
               <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
@@ -128,23 +116,23 @@ export default function AboutPage() {
               with&nbsp;Vercel
             </p>
           </a>
-          {flags.configure_card.enabled ? (
-            <a
-              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2 className={inter.className}>
-                Configure <span>-&gt;</span>
-              </h2>
-              <p className={inter.className}>
-                Configure your feature rollout with&nbsp;Flagsmith
-              </p>
-            </a>
-          ) : null}
+
+          <a
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            className={styles.card}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h2 className={inter.className}>
+              Configure <span>-&gt;</span>
+            </h2>
+            <p className={inter.className}>
+              Configure your feature rollout
+              with&nbsp;Flagsmith
+            </p>
+          </a>
         </div>
       </main>
     </>
-  );
+  )
 }
