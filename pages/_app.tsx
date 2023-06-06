@@ -15,13 +15,14 @@ function App({
   );
 }
 
-App.getInitialProps = async () => {
+export async function getServerSideProps() {
   await flagsmith.init({
     // fetches flags on the server
     environmentID: "heiEFz5x78igSLA8fGRgiP", // substitute your env ID
     identity: "my_user_id", // specify the identity of the user to get their specific flags
   });
-  return { flagsmithState: flagsmith.getState() };
-};
+  const flagsmithState = flagsmith.getState();
+  return { props: { flagsmithState } };
+}
 
 export default App;
